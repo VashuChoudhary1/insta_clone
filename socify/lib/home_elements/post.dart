@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socify/consts/colors.dart';
 
 class PostPage extends StatefulWidget {
   const PostPage({super.key});
@@ -21,7 +22,7 @@ class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 500,
+      height: 700,
       width: double.infinity,
       child: ListView.builder(
           scrollDirection: Axis.vertical,
@@ -34,38 +35,90 @@ class _PostPageState extends State<PostPage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Stack(
-                  children: [
-                    Image.network(
-                      postList[index],
-                      fit: BoxFit.cover,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0, vertical: 5.0),
-                      child: Container(
-                        height: 30,
-                        child: Row(
+                child: Center(
+                  child: Stack(
+                    children: [
+                      Image.network(
+                        postList[index],
+                        fit: BoxFit.cover,
+                      ),
+                      Positioned(
+                        top: 10,
+                        left: 10,
+                        right: 10,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8.0, vertical: 5.0),
+                          child: Container(
+                            height: 35,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: Colors.black.withOpacity(0.5)),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.0, vertical: 5.0),
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 15,
+                                    backgroundImage:
+                                        NetworkImage(postList[index]),
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
+                                  Text(
+                                    "user name ",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Icon(
+                                    Icons.drag_indicator_rounded,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 10,
+                        left: 10,
+                        right: 10,
+                        child: Column(
                           children: [
-                            CircleAvatar(
-                              radius: 15,
-                              backgroundImage: NetworkImage(postList[index]),
-                            ),
-                            Text(
-                              "Profile user name ",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Container(
-                              child: Icon(Icons.drag_indicator_rounded),
-                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.favorite_border,
+                                  color: Colors.white,
+                                ),
+                                Text(
+                                  "1234",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                Icon(
+                                  Icons.message_outlined,
+                                  color: Colors.white,
+                                ),
+                                Text("172",
+                                    style: TextStyle(color: Colors.white)),
+                                Icon(Icons.share_sharp, color: Colors.white),
+                                Text("20",
+                                    style: TextStyle(color: Colors.white))
+                              ],
+                            )
                           ],
                         ),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );
